@@ -33,8 +33,8 @@ public class VotingServiceImpl implements VotingService {
 
     @Override
     public void voting(VotingInfo votingInfo) {
-        Voter voter = getVoter(votingInfo.getVoterId());
-        Project project = getProject(votingInfo.getProjectId());
+        Voter voter = getVoterByIdOrThrow(votingInfo.getVoterId());
+        Project project = getProjectByIdOrThrow(votingInfo.getProjectId());
 
         boolean isNotVoted = checkIfNotVoted(voter, votingInfo.getProjectId());
         if (isNotVoted) {
@@ -52,13 +52,13 @@ public class VotingServiceImpl implements VotingService {
         }
     }
 
-    private Voter getVoter(long voterId) {
+    private Voter getVoterByIdOrThrow(long voterId) {
         return voterRepository
             .findById(voterId)
             .orElseThrow(() -> new VotingException(ExceptionMessage.VOTER_NOT_FOUND));
     }
 
-    private Project getProject(long projectId) {
+    private Project getProjectByIdOrThrow(long projectId) {
         return projectRepository
             .findById(projectId)
             .orElseThrow(() -> new VotingException(ExceptionMessage.PROJECT_NOT_FOUND));

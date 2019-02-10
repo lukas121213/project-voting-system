@@ -74,6 +74,7 @@ public class Voter {
 
         Voter voter = (Voter) o;
 
+        if (id != null ? !id.equals(voter.id) : voter.id != null) return false;
         if (firstName != null ? !firstName.equals(voter.firstName) : voter.firstName != null) return false;
         return surname != null ? surname.equals(voter.surname) : voter.surname == null;
     }

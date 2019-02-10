@@ -23,11 +23,11 @@ public class Voter {
 
     @ApiModelProperty(notes = "Voter first name")
     @JsonProperty("first_name")
-    @Column(name = "firstName")
+    @Column(name = "firstName", nullable = false)
     private String firstName;
 
     @ApiModelProperty(notes = "Voter surname")
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     private String surname;
 
     @ApiModelProperty(hidden = true)

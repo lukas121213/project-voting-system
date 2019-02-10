@@ -23,7 +23,7 @@ public class Project {
     private Long id;
 
     @ApiModelProperty(notes = "Project name")
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @ApiModelProperty(notes = "Project description")
@@ -32,7 +32,7 @@ public class Project {
 
     @ApiModelProperty(notes = "Is project open for voting")
     @JsonProperty("voting_open")
-    @Column(name = "voting_open")
+    @Column(name = "voting_open", nullable = false)
     private boolean votingOpen;
 
     @ApiModelProperty(hidden = true)
